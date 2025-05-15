@@ -3,13 +3,25 @@
   "version": "1.0.0",
   "main": "index.mjs",
   "type": "module",
+    "description": "Scripts to automate Notion workflows",
+    "bin": {
+      "listBlocks": "./scripts/listBlocks.mjs",
+      "listDatabases": "./scripts/listDatabases.mjs",
+      "listPages": "./scripts/listPages.mjs",
+      "listUsers": "./scripts/listUsers.mjs"
+    },
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs",
+    "listBlocks": "node scripts/listBlocks.mjs",
+    "listDatabases": "node scripts/listDatabases.mjs",
+    "listPages": "node scripts/listPages.mjs",
+    "listUsers": "node scripts/listUsers.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["notion", "automation", "scripts", "api", "cli"],
+  "author": "Sara Tapusoa",
+  "license": "MIT",
   "dependencies": {
     "@notionhq/client": "^3.0.1",
     "dotenv": "^16.5.0",
