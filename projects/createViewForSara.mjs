@@ -5,6 +5,17 @@ import {
   headingBlock,
   dividerBlock,
   calloutBlock,
+  multiColumnNavBlock,
+  columnBlock,
+  multiStyledRichText,
+  bold,
+  italic,
+  strikethrough,
+  code,
+  h1,
+  h2,
+  h3,
+
 } from '../helpers/blocks.mjs';
 
 dotenv.config();
@@ -28,7 +39,13 @@ const createSaraView = async () => {
     icon: {
       type: "external",
       external: {
-        url: "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fpublic.notion-static.com%2F082b4df4-d654-4e2e-bc78-db9adc529dd9%2Fsara.svg?table=custom_emoji&id=1f3fc0e0-7c99-8078-a484-007a81179612&spaceId=583daeb3-13cb-49bd-8b46-36f05afd8ba5&userId=7164e0fd-d3cc-45e0-8e74-1c4f472eb26e&cache=v2"
+        url: "https://raw.githubusercontent.com/sara-tapusoa/notion-automation/main/assets/sara.svg"
+      }
+    },
+    cover: {
+      type: "external",
+      external: {
+        url: "https://images.unsplash.com/photo-1536329583941-14287ec6fc4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzkyMXwwfDF8c2VhcmNofDI1fHxkZXNpZ258ZW58MHx8fHwxNzQ3MjUwMDY2fDA&ixlib=rb-4.1.0&q=80&w=200"
       }
     }
   });
@@ -36,12 +53,36 @@ const createSaraView = async () => {
   const pageId = page.id;
 
   const blocks = [
-    calloutBlock("Back to Product", "⬅️", `https://www.notion.so/${PRODUCT_HOME}`),
-    dividerBlock(),
-
-    ...["Discovery", "Definition", "Design", "Development"].map(label =>
-      paragraphBlock(label, `https://www.notion.so/${PRODUCT_HOME}#${label.toLowerCase()}`)
+    multiColumnNavBlock(
+      [
+        { heading: "Navigation", url: "" },
+        { label: "Home", url: `https://www.notion.so/${PRODUCT_HOME}` },
+        { label: "Projects", url: `https://www.notion.so/${ROADMAP_ID}` },
+        { label: "Product Meeting", url: `https://www.notion.so/${TASKS_DATABASE_ID}` },
+        { label: "Product Framework", url: `https://www.notion.so/${PRODUCT_HOME}` },
+      ],
+      5
     ),
+    dividerBlock(),
+    columnBlock([
+      [calloutBlock(
+        multiStyledRichText([
+          { "My Tasks": bold, color: "green" },
+
+          { "Is this going to work": bold, italic },
+          { "This is like a heading": bold, italic },
+          "This is a normal text",
+        ]),
+      )],
+      [calloutBlock(
+        "Product Wiki",
+        "🟦",
+        null,
+        
+          headingBlock("Product Wiki", 1)
+       
+      )],
+    ]),
 
     dividerBlock(),
     headingBlock("⚡ Quick Actions", 2),
