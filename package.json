@@ -1,23 +1,17 @@
 {
   "name": "notion-automation",
   "version": "1.0.0",
-  "main": "index.mjs",
+  "description": "Scripts to automate Notion workflows",
   "type": "module",
-    "description": "Scripts to automate Notion workflows",
-    "bin": {
-      "listBlocks": "./scripts/listBlocks.mjs",
-      "listDatabases": "./scripts/listDatabases.mjs",
-      "listPages": "./scripts/listPages.mjs",
-      "listUsers": "./scripts/listUsers.mjs"
-    },
-
+  "main": "index.mjs",
+  "bin": {
+    "listBlocks": "./scripts/listBlocks.mjs",
+    "listDatabases": "./scripts/listDatabases.mjs",
+    "listPages": "./scripts/listPages.mjs",
+    "listUsers": "./scripts/listUsers.mjs"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mjs",
-    "listBlocks": "node scripts/listBlocks.mjs",
-    "listDatabases": "node scripts/listDatabases.mjs",
-    "listPages": "node scripts/listPages.mjs",
-    "listUsers": "node scripts/listUsers.mjs"
+    "start": "node index.mjs"
   },
   "keywords": ["notion", "automation", "scripts", "api", "cli"],
   "author": "Sara Tapusoa",
