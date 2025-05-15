@@ -47,22 +47,28 @@ listUsers
 
 **Usage Example:**
 
-- List blocks from the NOTION_TEMPLATE_PAGE_ID (or whatever ID variable you set in your `.env`):
+- List top-level blocks in a page (e.g., from an `.env` variable):
 ```bash
 listBlocks
 ```
+You'll be prompted:
+"What .env ID variable do you want to use?"
 
 - List children blocks from a specific block:
 ```bash
-listBlocks children BLOCK_ID
+listBlocks children
 ```
+You'll be prompted for a block ID.
 
-- Copy a block (and its children) to the Template page (or whatever ID variable set in your `.env`):
+- Copy a block (and its children) to another block:
 ```bash
-listBlocks children BLOCK_ID to TEMPLATE_PAGE_ID
+listBlocks copy
 ```
+You'll be prompted for:
+- Source block ID
+- Destination block/page ID
 
-⚠️ This does not yet support buttons, since they are not exposed in the Notion API.
+⚠️ Note: Not all block types are supported by Notion's API. Blocks like buttons will cause validation errors. Unfortunately, they are not exposed in the Notion API yet.
 
 **`listDatabases.mjs`**
 
@@ -106,6 +112,7 @@ listUsers
 - Keep `.env` safe. Never push secrets to version control.
 - The Notion API does not yet support copying all block types (like buttons). Use the block-copy script with awareness of limitations.
 - This project is written using native ES modules. Scripts must use `.mjs` or `.js` or be compiled.
+- You can extend this CLI by adding more commands to package.json > bin.
   
 ## Thanks!
 
